@@ -1,0 +1,24 @@
+body{
+    background-color: lightgray;
+}
+
+.recipe-header, .ingredients, .steps{
+    font-size: 48px;
+    text-align: center;
+}
+
+.outer-style{
+   text-align: center;
+}
+
+.inner-style {
+    display: inline-block;
+    text-align: left;
+    list-style-position: inside;
+}
+
+.recipe-list{
+    text-size: 35px;
+    color: darkgray;
+    font-weight: bold;
+}
