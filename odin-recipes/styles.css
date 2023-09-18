@@ -2,7 +2,7 @@ body{
     background-color: lightgray;
 }
 
-.recipe-header, .ingredients, .steps{
+.center-header {
     font-size: 48px;
     text-align: center;
 }
@@ -21,4 +21,26 @@ body{
     text-size: 35px;
     color: darkgray;
     font-weight: bold;
+}
+
+.wrap-text{
+    max-width: 400px;
+    /* margin: 50px; */
+}
+
+.wrap-text li{
+    padding: 20px;
+}
+
+.wrap-text.quote{
+    max-width: 800px;
+}
+
+.highlight {
+    background-color: blanchedalmond;
+}
+
+.quote {
+    font-style: italic;
+    font-size: 40px;
 }
