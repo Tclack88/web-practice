@@ -18,10 +18,10 @@ body{
 }
 
 .recipe-list{
-    text-size: 35px;
+    font-size: 35px;
     color: darkgray;
     font-weight: bold;
-}
+}   
 
 .wrap-text{
     max-width: 400px;
@@ -33,7 +33,9 @@ body{
 }
 
 .wrap-text.quote{
-    max-width: 800px;
+    max-width: auto;
+    /* max-width: 800px; */
+
 }
 
 .highlight {
@@ -43,4 +45,19 @@ body{
 .quote {
     font-style: italic;
     font-size: 40px;
+}
+
+li {
+    padding: 15px;
+    font-size: 1.5em;
+}
+
+.horizontal{
+    display: inline-block;
+    margin: 10px;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
 }
