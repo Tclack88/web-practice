@@ -93,12 +93,12 @@
 }
 
 /* .footer-three {
-  flex: 2;
+  flex: 1 1 auto;
 } */
 
 .footer-one, .footer-three{
   background-color:  #5995DA;
-  flex: initial;
+  flex: zero;
   width: 300px;
 }
 
