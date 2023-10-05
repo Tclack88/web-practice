@@ -22,8 +22,8 @@ body {
   box-shadow: 2px 4px 16px rgba(0,0,0,.2);
   padding: 20px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  /* justify-content: space-evenly; */
+  gap: 5%;
 }
 
 .icon {
@@ -37,6 +37,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0; /* Prevents the circle from becoming a squished ellipse */
 }
 
 .close-button {
@@ -52,6 +53,7 @@ body {
   justify-content: center;
   border: 1px solid #eee;
   padding: 0;
+  flex-shrink: 0; /* Prevents the circle from becoming a squished ellipse */
 }
 
 button {
@@ -74,4 +76,15 @@ button.cancel {
 
 .header {
   font-weight: bold;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.button-layout {
+  display: flex;
+  justify-content: flex-start;
 }
