@@ -3,15 +3,21 @@ body{
     flex-direction: column;
 }
 
-header {
+header, footer {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-color: #1F2937;
 }
 
 .header-list {
     display: flex;
     gap: 10px;
+}
+
+.header-list li{
+    font-size: 18px;
+    color: #E5E7EB;
 }
 
 li {
@@ -20,11 +26,31 @@ li {
 
 .top-section {
     display: flex;
+    justify-content: space-around;
+    /* color: #1F2937; */
+    background-color: #1F2937;
+
 }
 
 .top-left {
     display: flex;
     flex-direction: column;
+}
+
+.top-left p{
+    max-width: 500px;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.top-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    padding: 50px;
 }
 
 .middle-top-section {
@@ -35,18 +61,25 @@ li {
 .middle-top-info {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    /* gap: 20px; */
 }
 
 .middle-top-info li {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+}
+
+.middle-top-info li p {
+    max-width: 100px;
 }
 
 .blue-square {
     padding: 20px;
-    border: 5px solid blue;
+    border: 5px solid #3882F6;
     border-radius: 10px;
+    width: 100px;
+    height: 100px;
 }
 
 .middle-bottom-section {
@@ -54,18 +87,73 @@ li {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #E5E7EB;
 }
 
 .bottom-section {
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin: 50px;
 }
 
 .blue-banner {
     display: flex;
+    background-color: #3882F6;
+    padding: 50px;
+    gap: 20px;
+    border-radius: 10px;
+    align-items: center;
+
+}
+
+.quote {
+    font-size: 36px;
+    font-style: italic;
+    font-weight: lighter;
+    color: #1F2937;
+    max-width: 800px;
 }
 
 .quote-speaker {
     align-self: flex-end;
+    font-weight: bold;
+}
+
+
+h1 {
+    font-size: 48px;
+    font-weight: bolder;
+    color: #F9FAF8;
+}
+
+.header-logo {
+    font-size: 24px;
+    color: #F9FAF8;
+}
+
+.top-left p{
+    color: #E5E7EB;
+    font-size: 18px;
+}
+
+.information {
+    font-size: 36px;
+    font-weight: bolder;
+    color: #1F2937
+}
+
+button {
+    background-color: #3882F6;
+    color: white;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.white-border {
+    border: 2px solid white;
+}
+
+.white-text {
+    color: white;
 }
