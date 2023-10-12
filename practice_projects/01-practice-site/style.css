@@ -3,11 +3,15 @@ body{
     flex-direction: column;
 }
 
+
 header, footer {
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: #1F2937;
+    padding: 20px;
+    color: #E5E7EB;
+    font-size: 18px;
 }
 
 .header-list {
@@ -16,7 +20,6 @@ header, footer {
 }
 
 .header-list li{
-    font-size: 18px;
     color: #E5E7EB;
 }
 
@@ -29,7 +32,7 @@ li {
     justify-content: space-around;
     /* color: #1F2937; */
     background-color: #1F2937;
-
+    padding: 100px;
 }
 
 .top-left {
@@ -51,17 +54,19 @@ li {
     align-items: center;
     background-color: gray;
     padding: 50px;
+    color: #E5E7EB;
 }
 
 .middle-top-section {
     display: flex;
     flex-direction: column;
+    padding: 20px;
 }
 
 .middle-top-info {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     /* gap: 20px; */
 }
 
@@ -71,7 +76,7 @@ li {
 }
 
 .middle-top-info li p {
-    max-width: 100px;
+    max-width: 150px;
 }
 
 .blue-square {
@@ -103,7 +108,7 @@ li {
     gap: 20px;
     border-radius: 10px;
     align-items: center;
-
+    width: 1200px;
 }
 
 .quote {
@@ -139,7 +144,8 @@ h1 {
 .information {
     font-size: 36px;
     font-weight: bolder;
-    color: #1F2937
+    color: #1F2937;
+    align-self: center;
 }
 
 button {
