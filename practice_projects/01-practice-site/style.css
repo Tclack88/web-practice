@@ -1,6 +1,7 @@
 body{
     display: flex;
     flex-direction: column;
+    font-family: sans-serif;
 }
 
 
@@ -9,14 +10,14 @@ header, footer {
     justify-content: space-around;
     align-items: center;
     background-color: #1F2937;
-    padding: 20px;
+    /* padding: 20px; */
     color: #E5E7EB;
     font-size: 18px;
 }
 
 .header-list {
     display: flex;
-    gap: 10px;
+    gap: 20px;
 }
 
 .header-list li{
@@ -32,16 +33,12 @@ li {
     justify-content: space-around;
     /* color: #1F2937; */
     background-color: #1F2937;
-    padding: 100px;
 }
 
 .top-left {
     display: flex;
     flex-direction: column;
-}
-
-.top-left p{
-    max-width: 500px;
+    max-width: 450px;
 }
 
 .wrap {
@@ -53,7 +50,8 @@ li {
     justify-content: center;
     align-items: center;
     background-color: gray;
-    padding: 50px;
+    font-size: 18px;
+    padding: 100px;
     color: #E5E7EB;
 }
 
@@ -66,8 +64,8 @@ li {
 .middle-top-info {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    /* gap: 20px; */
+    justify-content: center;
+    gap: 40px;
 }
 
 .middle-top-info li {
@@ -81,17 +79,15 @@ li {
 
 .blue-square {
     padding: 20px;
-    border: 5px solid #3882F6;
-    border-radius: 10px;
+    border: 4px solid #3882F6;
+    border-radius: 20px;
     width: 100px;
     height: 100px;
 }
 
 .middle-bottom-section {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
     background-color: #E5E7EB;
 }
 
@@ -104,11 +100,11 @@ li {
 .blue-banner {
     display: flex;
     background-color: #3882F6;
-    padding: 50px;
+    padding: 40px;
     gap: 20px;
     border-radius: 10px;
     align-items: center;
-    width: 1200px;
+    width: 1000px;
 }
 
 .quote {
@@ -116,12 +112,14 @@ li {
     font-style: italic;
     font-weight: lighter;
     color: #1F2937;
-    max-width: 800px;
+    margin-bottom: 0px;
 }
 
 .quote-speaker {
     align-self: flex-end;
     font-weight: bold;
+    font-size: 24px;
+    margin-right: 50px;
 }
 
 
@@ -129,16 +127,19 @@ h1 {
     font-size: 48px;
     font-weight: bolder;
     color: #F9FAF8;
+    margin-bottom: 0px;
 }
 
 .header-logo {
     font-size: 24px;
+    font-weight: bold;
     color: #F9FAF8;
 }
 
 .top-left p{
     color: #E5E7EB;
     font-size: 18px;
+    margin: 0px;
 }
 
 .information {
@@ -151,9 +152,12 @@ h1 {
 button {
     background-color: #3882F6;
     color: white;
-    width: 100px;
-    height: 50px;
+    width: 120px;
+    height: 40px;
     border-radius: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 10px 0px;
 }
 
 .white-border {
@@ -162,4 +166,40 @@ button {
 
 .white-text {
     color: white;
+}
+
+
+.control-width {
+    display: flex;
+    padding: 50px;
+    gap: 20px;
+    align-items: center;
+    width: 1000px;
+}
+
+
+.control-width-smaller {
+    display: flex;
+    padding: 50px;
+    gap: 20px;
+    align-items: center;
+    width: 830px;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.space-around {
+    justify-content: space-around;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.column-align {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
 }
