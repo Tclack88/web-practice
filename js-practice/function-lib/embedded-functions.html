@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let add7 = (n) => n+7;
+
+        let multiply = (a,b) => a*b;
+
+        function capitalize(str){
+            first = str[0].toUpperCase();
+            rest = str.slice(1,);
+            return first+rest;
+        }
+
+        function lastLetter(str){
+            last = str.slice(-1);
+            return last;
+        }
+
+
+        alert("Task 1: 7 + 7 = "+ add7(7));
+        alert("Task 2: 7 * 7 = "+ multiply(7,7));
+        alert("Task 3: china capitalized is = "+ capitalize("china"));
+        alert("Task 4: last letter of china is = "+ lastLetter("china"));
+    </script>
+    
+</body>
+</html>
