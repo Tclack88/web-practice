@@ -23,3 +23,14 @@ para2.textContent = "ME TOO!";
 
 newDiv.appendChild(h1);
 newDiv.appendChild(para2);
+
+const btn = document.querySelector('#btn');
+// btn.addEventListener('click', () => {
+//     alert('Hello World');
+// });
+// btn.addEventListener('click', function (e) {
+//     console.log(e.target);
+//   });
+btn.addEventListener('click', function (e) {  // function (e) {...} same as (e) => {...}
+    e.target.style.background = 'blue';
+  });
