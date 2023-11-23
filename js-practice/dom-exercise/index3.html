@@ -1,0 +1,99 @@
+<!-- My original attempt. Not working -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Keyboard Events: Key/Code</title>
+</head>
+<body>
+    <input type="text" id="message">
+
+    <script>
+        let textBox = document.getElementById('message');
+        textBox.addEventListener('keyup', (event) => {
+	        if (event.ctrlKey) {
+                let keyPressed = event.key;
+                console.log(event);
+                textBox.value += keyPressed;
+                // textBox.value = "new text because of control";
+            }
+            console.log(`key=${event.key},code=${event.code}`);
+            console.log(textBox.value);
+        });
+    </script>
+</body>
+</html> -->
+
+<!-- The following version works after some back and forth with chatGPT (plus a little of my own input) -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Keyboard Events: Key/Code</title>
+</head>
+<body>
+    <input type="text" id="message">
+
+    <script>
+        let textBox = document.getElementById('message');
+        let ctrlPressed = false;
+
+        textBox.addEventListener('keydown', (event) => {
+            console.log(event);
+            if (event.ctrlKey) ctrlPressed = true;
+
+            if (event.key === 'Control') {
+                ctrlPressed = true;
+                event.preventDefault(); // Prevent default action for the Ctrl key
+            } else if (ctrlPressed) {
+                let keyPressed = event.key;
+                textBox.value += keyPressed;
+                event.preventDefault(); // Prevent default action for Ctrl key combinations
+                ctrlPressed = false; // Reset the flag after processing the Ctrl key combination
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+<!-- The following is from chatGPT to fix a bug wherein pressing (for example) ctrl+backspace will 
+    cause the word "Backspace" to appear. However I don't understand it fully so I won't implement it
+    instead I will keep it here for reference: -->
+    
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Keyboard Events: Key/Code</title>
+</head>
+<body>
+    <input type="text" id="message">
+
+    <script>
+        let textBox = document.getElementById('message');
+        let ctrlPressed = false;
+
+        textBox.addEventListener('keydown', (event) => {
+            if (event.ctrlKey) ctrlPressed = true;
+
+            if (event.key === 'Control') {
+                ctrlPressed = true;
+                event.preventDefault(); // Prevent default action for the Ctrl key
+            } else if (ctrlPressed && event.key.length === 1 && !event.altKey && !event.shiftKey) {
+                // Check if the key is a printable character and not combined with Shift or Alt
+                let keyPressed = event.key;
+                textBox.value += keyPressed;
+                event.preventDefault(); // Prevent default action for Ctrl key combinations
+                ctrlPressed = false; // Reset the flag after processing the Ctrl key combination
+            }
+        });
+
+        textBox.addEventListener('keyup', (event) => {
+            if (event.key === 'Control') {
+                ctrlPressed = false; // Reset the flag when Ctrl key is released
+            }
+        });
+    </script>
+</body>
+</html> -->
+
+
