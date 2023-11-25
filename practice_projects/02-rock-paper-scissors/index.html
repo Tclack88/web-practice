@@ -3,11 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Rock Paper Scissors game</title>
 </head>
 <body>
-    <h1>Rock Paper Scissors (console game)</h1>
-    <p style="font-size: xx-large">This plays only in the console... So right-click and choose "inspect" and find the console tab to enjoy this wonderfully dull version of the game!</p>
+    <h1>Rock Paper Scissors</h1>
+
+    <button id="play-btn">Play!</button>
+
+    <div id="selection-btns" class="hide" value="">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+
+    <div id="results">
+
+    </div>
     <script src="rock-paper-scissors.js"></script>
 </body>
 </html>

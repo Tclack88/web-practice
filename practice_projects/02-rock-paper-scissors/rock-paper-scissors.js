@@ -1,24 +1,48 @@
 document.addEventListener("DOMContentLoaded", event => {
-    console.log("Rock Paper Scissors!");
+    // console.log("Rock Paper Scissors!");
+
+
+    let playBtn = document.querySelector("#play-btn");
+    let selectionBtns = document.querySelector("#selection-btns");
+    playBtn.addEventListener("click", () => {
+        playBtn.classList.add("hide");
+        selectionBtns.classList.remove("hide");
+
+        // let playerChoices = document.querySelectorAll("#rock, #paper, #scissors");
+        // playerChoices.forEach((choice) => 
+        //     choice.addEventListener('click', () =>{
+        //         selectionBtns.value = choice.id;
+        //     } ));
+
+    });
 
     const choices = ["rock","paper","scissors"];
     let playAgain = true;
+    let response = false;
 
     function getPlayerChoice(){
+        console.log("in player selection");
         let playerSelection;
-        let invalidChoice = true;
-        while (invalidChoice){
-            playerSelection = prompt("Choose (type) Rock, Paper or Scissors: ");
-            if (playerSelection){ // Needed because cancelling the prompt gives playerSelection as undefined
-                playerSelection = playerSelection.toLowerCase();
-                if (playerSelection != "rock" & playerSelection != "paper" & playerSelection != "scissors"){
-                    console.log("Not a valid response, type only one of \"rock, paper, scissors\" ");
-                }else{
-                    invalidChoice = false;
-                }
-            }
-        }
-        return playerSelection;
+        // let invalidChoice = true;
+
+        let playerChoices = document.querySelectorAll("#rock, #paper, #scissors");
+        playerChoices.forEach((choice) => 
+            choice.addEventListener('click', () =>{
+                selectionBtns.value = choice.id;
+            } ));
+        
+        response = checkResponse();
+        if (response){
+            playerSelection = selectionBtns.value;
+            return playerSelection;
+        };
+
+        // playerSelection = prompt("Choose (type) Rock, Paper or Scissors: ");
+    }
+
+    function checkResponse() {
+        if (selectionBtns.value) return true;
+        else window.setTimeout(checkResponse,500);
     }
 
     let getcomputerSelection = () => choices[Math.floor(Math.random()*choices.length)]
@@ -59,7 +83,11 @@ document.addEventListener("DOMContentLoaded", event => {
                     result = "draw";
             }
         }
-        console.log(
+        // console.log(
+        //     `Your choice: ${playerSelection}
+        //     Computer's choice: ${computerSelection}
+        //     Result: ${result}!`);
+        alert(
             `Your choice: ${playerSelection}
             Computer's choice: ${computerSelection}
             Result: ${result}!`);
@@ -67,6 +95,7 @@ document.addEventListener("DOMContentLoaded", event => {
 
     function game(){
         while(playAgain){
+            console.log("in game");
             let computerSelection = getcomputerSelection();
             let playerSelection = getPlayerChoice();
             playRound(computerSelection, playerSelection);
@@ -79,3 +108,18 @@ game();
 
 
 });
+
+// let playBtn = document.querySelector("#play-btn");
+// let selectionBtns = document.querySelector("#selection-btns");
+// playBtn.addEventListener("click", () => {
+//     playBtn.classList.add("hide");
+//     selectionBtns.classList.remove("hide");
+//     // game();
+
+//     let playerChoices = document.querySelectorAll("#rock, #paper, #scissors");
+//     playerChoices.forEach((choice) => 
+//         choice.addEventListener('click', () =>{
+//             selectionBtns.value = choice.id;
+//         } ));
+
+// });
