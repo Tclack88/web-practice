@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", event => {
     // console.log("Rock Paper Scissors!");
 
+    let playerSelection;
 
     let playBtn = document.querySelector("#play-btn");
     let selectionBtns = document.querySelector("#selection-btns");
@@ -16,34 +17,64 @@ document.addEventListener("DOMContentLoaded", event => {
 
     });
 
+    let playerChoices = document.querySelectorAll("#rock, #paper, #scissors");
+    playerChoices.forEach((choice) => 
+        choice.addEventListener('click', () =>{
+            selectionBtns.value = choice.id;
+        } ));
+
     const choices = ["rock","paper","scissors"];
     let playAgain = true;
-    let response = false;
+    // let response = false;
 
     function getPlayerChoice(){
         console.log("in player selection");
         let playerSelection;
         // let invalidChoice = true;
 
-        let playerChoices = document.querySelectorAll("#rock, #paper, #scissors");
-        playerChoices.forEach((choice) => 
-            choice.addEventListener('click', () =>{
-                selectionBtns.value = choice.id;
-            } ));
+        // let playerChoices = document.querySelectorAll("#rock, #paper, #scissors");
+        // playerChoices.forEach((choice) => 
+        //     choice.addEventListener('click', () =>{
+        //         selectionBtns.value = choice.id;
+        //     } ));
         
-        response = checkResponse();
-        if (response){
-            playerSelection = selectionBtns.value;
-            return playerSelection;
-        };
+        // while (!response){
+        //     let timeoutID = setTimeout(() =>{
+        //         response=checkResponse()
+        //         clearInterval(timeoutID);
+        //     }
+        //         ,5000);
+        //     console.log("player still choosing");
+        // };
+        // console.log(`checking response: ${response}`);
+        // function waitThenContinue(){
+        //     if (!response){
+        //         console.log(`in wait/Continue: !response is ${!response}`);
+        //         response = checkResponse();
+        //     }else{
+        //         console.log(`in wait/Continue: !response is ${!response}`);
+        //         setTimeout(waitThenContinue,1000);
+        //     }
+        // }
+        // waitThenContinue();
+
+        // console.log(`checking response 2: ${response}`);
+
+
+
+        console.log('player has made choice');
+        playerSelection = selectionBtns.value;
+        // return playerSelection;
+
 
         // playerSelection = prompt("Choose (type) Rock, Paper or Scissors: ");
     }
 
-    function checkResponse() {
-        if (selectionBtns.value) return true;
-        else window.setTimeout(checkResponse,500);
-    }
+    // function checkResponse() {
+    //     if (selectionBtns.value) return true;
+    //     return false;
+    //     // else window.setTimeout(checkResponse,500);
+    // }
 
     let getcomputerSelection = () => choices[Math.floor(Math.random()*choices.length)]
 
@@ -97,14 +128,29 @@ document.addEventListener("DOMContentLoaded", event => {
         while(playAgain){
             console.log("in game");
             let computerSelection = getcomputerSelection();
-            let playerSelection = getPlayerChoice();
-            playRound(computerSelection, playerSelection);
+            // let playerSelection = getPlayerChoice();
 
-            playAgain = confirm("Play again? ");
+            let idInterval = setInterval(getPlayerChoice,1000);
+            if (playerSelection){
+                clearInterval(idInterval);
+            }
+
+            // if (playerSelection){
+            //     clearInterval(idInterval);
+            //     console.log("playerSelection is true");
+            //     playRound(computerSelection, playerSelection);
+            //     playAgain = confirm("Play again? ");
+            // }
+            // else{
+            //     console.log("playerSelection is false");
+            //     let idInterval = setInterval(getPlayerChoice,1000);
+            // }
+            // playRound(computerSelection, playerSelection);
+
         }
     }
 
-game();
+    game();
 
 
 });
