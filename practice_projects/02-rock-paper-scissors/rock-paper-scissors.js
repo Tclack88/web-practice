@@ -1,14 +1,14 @@
-document.addEventListener("DOMContentLoaded", event => {
+document.addEventListener("DOMContentLoaded", () => {
     // console.log("Rock Paper Scissors!");
-
     let playerSelection;
+    let computerSelection;
 
     let playBtn = document.querySelector("#play-btn");
     let selectionBtns = document.querySelector("#selection-btns");
     playBtn.addEventListener("click", () => {
         playBtn.classList.add("hide");
         selectionBtns.classList.remove("hide");
-
+        // playerSelection = selectionBtns.value;
         // let playerChoices = document.querySelectorAll("#rock, #paper, #scissors");
         // playerChoices.forEach((choice) => 
         //     choice.addEventListener('click', () =>{
@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", event => {
     playerChoices.forEach((choice) => 
         choice.addEventListener('click', () =>{
             selectionBtns.value = choice.id;
+            game();
         } ));
 
     const choices = ["rock","paper","scissors"];
@@ -28,46 +29,9 @@ document.addEventListener("DOMContentLoaded", event => {
     // let response = false;
 
     function getPlayerChoice(){
-        console.log("in player selection");
-        let playerSelection;
-        // let invalidChoice = true;
-
-        // let playerChoices = document.querySelectorAll("#rock, #paper, #scissors");
-        // playerChoices.forEach((choice) => 
-        //     choice.addEventListener('click', () =>{
-        //         selectionBtns.value = choice.id;
-        //     } ));
-        
-        // while (!response){
-        //     let timeoutID = setTimeout(() =>{
-        //         response=checkResponse()
-        //         clearInterval(timeoutID);
-        //     }
-        //         ,5000);
-        //     console.log("player still choosing");
-        // };
-        // console.log(`checking response: ${response}`);
-        // function waitThenContinue(){
-        //     if (!response){
-        //         console.log(`in wait/Continue: !response is ${!response}`);
-        //         response = checkResponse();
-        //     }else{
-        //         console.log(`in wait/Continue: !response is ${!response}`);
-        //         setTimeout(waitThenContinue,1000);
-        //     }
-        // }
-        // waitThenContinue();
-
-        // console.log(`checking response 2: ${response}`);
-
-
-
+        let playerSelection = selectionBtns.value;
         console.log('player has made choice');
-        playerSelection = selectionBtns.value;
-        // return playerSelection;
-
-
-        // playerSelection = prompt("Choose (type) Rock, Paper or Scissors: ");
+        return playerSelection;
     }
 
     // function checkResponse() {
@@ -125,32 +89,42 @@ document.addEventListener("DOMContentLoaded", event => {
     }
 
     function game(){
-        while(playAgain){
-            console.log("in game");
-            let computerSelection = getcomputerSelection();
-            // let playerSelection = getPlayerChoice();
+        // while(playAgain){
+        // if (playAgain){
+        //     console.log("in game");
+        //     computerSelection = getcomputerSelection();
+        //     playerSelection = getPlayerChoice();
 
-            let idInterval = setInterval(getPlayerChoice,1000);
-            if (playerSelection){
-                clearInterval(idInterval);
-            }
+        //     // let idInterval = setInterval(getPlayerChoice,1000);
+        //     // if (playerSelection){
+        //     //     console.log("DEBUG: player selection positive, clearing intervalID");
+        //     //     clearInterval(idInterval);
+        //     // }
 
-            // if (playerSelection){
-            //     clearInterval(idInterval);
-            //     console.log("playerSelection is true");
-            //     playRound(computerSelection, playerSelection);
-            //     playAgain = confirm("Play again? ");
-            // }
-            // else{
-            //     console.log("playerSelection is false");
-            //     let idInterval = setInterval(getPlayerChoice,1000);
-            // }
-            // playRound(computerSelection, playerSelection);
-
-        }
+        //     // if (playerSelection){
+        //     //     clearInterval(idInterval);
+        //     //     console.log("playerSelection is true");
+        //     //     playRound(computerSelection, playerSelection);
+        //     //     playAgain = confirm("Play again? ");
+        //     // }
+        //     // else{
+        //     //     console.log("playerSelection is false");
+        //     //     let idInterval = setInterval(getPlayerChoice,1000);
+        //     // }
+        //     // playRound(computerSelection, playerSelection);
+        //     game();
+        // }else {
+        //     playAgain=false;
+        //     return;
+        // }
+        console.log("in game");
+        computerSelection = getcomputerSelection();
+        playerSelection = getPlayerChoice();
+        playRound(computerSelection, playerSelection);
+        selectionBtns.classList.add("hide");
     }
 
-    game();
+    // game();
 
 
 });
