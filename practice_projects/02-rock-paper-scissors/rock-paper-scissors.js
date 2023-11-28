@@ -8,13 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     playBtn.addEventListener("click", () => {
         playBtn.classList.add("hide");
         selectionBtns.classList.remove("hide");
-        // playerSelection = selectionBtns.value;
-        // let playerChoices = document.querySelectorAll("#rock, #paper, #scissors");
-        // playerChoices.forEach((choice) => 
-        //     choice.addEventListener('click', () =>{
-        //         selectionBtns.value = choice.id;
-        //     } ));
-
     });
 
     let playerChoices = document.querySelectorAll("#rock, #paper, #scissors");
@@ -26,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const choices = ["rock","paper","scissors"];
     let playAgain = true;
-    // let response = false;
 
     function getPlayerChoice(){
         let playerSelection = selectionBtns.value;
@@ -34,11 +26,30 @@ document.addEventListener("DOMContentLoaded", () => {
         return playerSelection;
     }
 
-    // function checkResponse() {
-    //     if (selectionBtns.value) return true;
-    //     return false;
-    //     // else window.setTimeout(checkResponse,500);
-    // }
+    function addRow(results){
+        console.log(results);
+        let table = document.querySelector("#history");
+        let row = document.createElement("tr");
+
+        let computer = results[0];
+        let player = results[1];
+        let res = results[2];
+
+        let c1 = document.createElement("td");
+        c1.innerText = computer;
+        let c2 = document.createElement("td");
+        c2.innerText = player;
+        let c3 = document.createElement("td");
+        c3.innerText = res;
+
+        row.appendChild(c1);
+        row.appendChild(c2);
+        row.appendChild(c3);
+
+        console.log(computer, player, res)
+
+        table.appendChild(row);
+    }
 
     let getcomputerSelection = () => choices[Math.floor(Math.random()*choices.length)]
 
@@ -82,10 +93,22 @@ document.addEventListener("DOMContentLoaded", () => {
         //     `Your choice: ${playerSelection}
         //     Computer's choice: ${computerSelection}
         //     Result: ${result}!`);
-        alert(
-            `Your choice: ${playerSelection}
-            Computer's choice: ${computerSelection}
-            Result: ${result}!`);
+
+        let gameResult = [playerSelection, computerSelection,result];
+        return gameResult;
+
+    }
+
+    function checkPlayAgain(){
+        let gameTable = document.querySelector('#history');
+        let tableLength = gameTable.rows.length;
+        console.log(tableLength);
+        if (tableLength >=5){
+            console.log('according to playagain, tablelength is >=5');
+            return false;
+        }
+        return true;
+
     }
 
     function game(){
@@ -120,8 +143,24 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("in game");
         computerSelection = getcomputerSelection();
         playerSelection = getPlayerChoice();
-        playRound(computerSelection, playerSelection);
-        selectionBtns.classList.add("hide");
+        let gameResult = playRound(computerSelection, playerSelection);
+        addRow(gameResult);
+
+        let resultText = document.querySelector("#results");
+
+        
+        playAgain = checkPlayAgain();
+        console.log(`playAgain result is ${playAgain}`);
+        if (playAgain){
+
+            resultText.textContent = (
+                `Your choice: ${gameResult[0]}
+                Computer's choice: ${gameResult[1]}
+                Result: ${gameResult[1]}!`);
+        }else{
+            selectionBtns.classList.add("hide");
+            resultText.textContent = '5 rounds complete';
+        }
     }
 
     // game();
