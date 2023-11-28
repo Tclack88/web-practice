@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // console.log("Rock Paper Scissors!");
     let playerSelection;
     let computerSelection;
 
@@ -8,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     playBtn.addEventListener("click", () => {
         playBtn.classList.add("hide");
         selectionBtns.classList.remove("hide");
+        document.querySelector('.rules').classList.add("hide");
     });
 
     let playerChoices = document.querySelectorAll("#rock, #paper, #scissors");
@@ -22,33 +22,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function getPlayerChoice(){
         let playerSelection = selectionBtns.value;
-        console.log('player has made choice');
         return playerSelection;
     }
 
     function addRow(results){
-        console.log(results);
         let table = document.querySelector("#history");
-        let row = document.createElement("tr");
-
-        let computer = results[0];
-        let player = results[1];
-        let res = results[2];
+        // let row = document.createElement("tr");
+        let row = table.insertRow(0);
 
         let c1 = document.createElement("td");
-        c1.innerText = computer;
+        c1.innerText = results[0]; // computer's choice
         let c2 = document.createElement("td");
-        c2.innerText = player;
+        c2.innerText = results[1]; // player's choice
         let c3 = document.createElement("td");
-        c3.innerText = res;
+        c3.innerText = results[2]; // game result (win-draw-lose)
 
         row.appendChild(c1);
         row.appendChild(c2);
         row.appendChild(c3);
 
-        console.log(computer, player, res)
-
-        table.appendChild(row);
+        // table.appendChild(row);
     }
 
     let getcomputerSelection = () => choices[Math.floor(Math.random()*choices.length)]
@@ -89,58 +82,45 @@ document.addEventListener("DOMContentLoaded", () => {
                     result = "draw";
             }
         }
-        // console.log(
-        //     `Your choice: ${playerSelection}
-        //     Computer's choice: ${computerSelection}
-        //     Result: ${result}!`);
 
         let gameResult = [playerSelection, computerSelection,result];
         return gameResult;
 
     }
 
+    function tallyResults(){
+        let playerWins = 0;
+        let computerWins = 0;
+        let gameTable = document.querySelector('#history');
+        let rows = gameTable.rows;
+        for (row of rows){
+            let result = row.lastChild.innerText
+            switch (result){
+                case 'win':
+                    playerWins +=1;
+                    break;
+                case 'lose':
+                    computerWins +=1;
+                    break;
+                case 'draw':
+                    break;
+            }
+        }
+        return [playerWins,computerWins,rows.length];
+    }
+
     function checkPlayAgain(){
         let gameTable = document.querySelector('#history');
         let tableLength = gameTable.rows.length;
-        console.log(tableLength);
         if (tableLength >=5){
-            console.log('according to playagain, tablelength is >=5');
             return false;
         }
         return true;
 
     }
 
-    function game(){
-        // while(playAgain){
-        // if (playAgain){
-        //     console.log("in game");
-        //     computerSelection = getcomputerSelection();
-        //     playerSelection = getPlayerChoice();
+    function game(){        
 
-        //     // let idInterval = setInterval(getPlayerChoice,1000);
-        //     // if (playerSelection){
-        //     //     console.log("DEBUG: player selection positive, clearing intervalID");
-        //     //     clearInterval(idInterval);
-        //     // }
-
-        //     // if (playerSelection){
-        //     //     clearInterval(idInterval);
-        //     //     console.log("playerSelection is true");
-        //     //     playRound(computerSelection, playerSelection);
-        //     //     playAgain = confirm("Play again? ");
-        //     // }
-        //     // else{
-        //     //     console.log("playerSelection is false");
-        //     //     let idInterval = setInterval(getPlayerChoice,1000);
-        //     // }
-        //     // playRound(computerSelection, playerSelection);
-        //     game();
-        // }else {
-        //     playAgain=false;
-        //     return;
-        // }
-        console.log("in game");
         computerSelection = getcomputerSelection();
         playerSelection = getPlayerChoice();
         let gameResult = playRound(computerSelection, playerSelection);
@@ -150,7 +130,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         
         playAgain = checkPlayAgain();
-        console.log(`playAgain result is ${playAgain}`);
         if (playAgain){
 
             resultText.textContent = (
@@ -159,26 +138,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 Result: ${gameResult[1]}!`);
         }else{
             selectionBtns.classList.add("hide");
-            resultText.textContent = '5 rounds complete';
+            let finalResults = tallyResults();
+            resultText.textContent = `You won ${finalResults[0]}/${finalResults[2]} rounds played`;
+            if (finalResults[0] >  finalResults[1]){
+                resultText.textContent += 'You Win :]';
+            }else if (finalResults[0] <  finalResults[1]){
+                resultText.textContent += 'You Lose :[';
+            }else resultText.textContent += 'You Tied :/';
         }
     }
-
-    // game();
-
-
 });
-
-// let playBtn = document.querySelector("#play-btn");
-// let selectionBtns = document.querySelector("#selection-btns");
-// playBtn.addEventListener("click", () => {
-//     playBtn.classList.add("hide");
-//     selectionBtns.classList.remove("hide");
-//     // game();
-
-//     let playerChoices = document.querySelectorAll("#rock, #paper, #scissors");
-//     playerChoices.forEach((choice) => 
-//         choice.addEventListener('click', () =>{
-//             selectionBtns.value = choice.id;
-//         } ));
-
-// });
