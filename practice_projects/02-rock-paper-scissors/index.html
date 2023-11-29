@@ -8,23 +8,29 @@
 </head>
 <body>
     <h1>Rock Paper Scissors</h1>
-    <p class="rules">Best of 5</p>
+    <div class="content">
+        <div class="subheader">
+            <p class="rules"></p>
+            <button id="play-btn">Play!</button>
+        </div>
 
-    <button id="play-btn">Play!</button>
+        <div id="selection-btns" class="hide" value="">
+            <button id="rock">🪨Rock</button>
+            <button id="paper">🧾Paper</button>
+            <button id="scissors">✂️Scissors</button>
+        </div>
 
-    <div id="selection-btns" class="hide" value="">
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
+        <div id="results">
+
+        </div>
+
+        <table id="history">
+            <th>Round</th>
+            <th>Your Choice</th>
+            <th>computer Choice</th>
+            <th>Result</th>
+        </table>
     </div>
-
-    <div id="results">
-
-    </div>
-
-    <table id="history">
-
-    </table>
     <script src="rock-paper-scissors.js"></script>
 </body>
 </html>

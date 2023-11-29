@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
+    let NRounds = 5;
     let playerSelection;
     let computerSelection;
+
+    let rulesText = document.querySelector('.rules');
+    rulesText.textContent = `Best of ${NRounds}`;
 
     let playBtn = document.querySelector("#play-btn");
     let selectionBtns = document.querySelector("#selection-btns");
@@ -27,21 +31,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function addRow(results){
         let table = document.querySelector("#history");
-        // let row = document.createElement("tr");
         let row = table.insertRow(0);
 
+        let c0 = document.createElement("td");
+        c0.innerText = `Round ${table.rows.length-1}:`
         let c1 = document.createElement("td");
         c1.innerText = results[0]; // computer's choice
         let c2 = document.createElement("td");
         c2.innerText = results[1]; // player's choice
         let c3 = document.createElement("td");
         c3.innerText = results[2]; // game result (win-draw-lose)
+        c3.style = "emphasize";
 
+        row.appendChild(c0);
         row.appendChild(c1);
         row.appendChild(c2);
         row.appendChild(c3);
-
-        // table.appendChild(row);
     }
 
     let getcomputerSelection = () => choices[Math.floor(Math.random()*choices.length)]
@@ -112,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function checkPlayAgain(){
         let gameTable = document.querySelector('#history');
         let tableLength = gameTable.rows.length;
-        if (tableLength >=5){
+        if (tableLength >= NRounds+1){
             return false;
         }
         return true;
@@ -135,11 +140,11 @@ document.addEventListener("DOMContentLoaded", () => {
             resultText.textContent = (
                 `Your choice: ${gameResult[0]}
                 Computer's choice: ${gameResult[1]}
-                Result: ${gameResult[1]}!`);
+                Result: ${gameResult[2]}!`);
         }else{
             selectionBtns.classList.add("hide");
             let finalResults = tallyResults();
-            resultText.textContent = `You won ${finalResults[0]}/${finalResults[2]} rounds played`;
+            resultText.textContent = `You won ${finalResults[0]}/${finalResults[2]-1} rounds played. `;
             if (finalResults[0] >  finalResults[1]){
                 resultText.textContent += 'You Win :]';
             }else if (finalResults[0] <  finalResults[1]){
