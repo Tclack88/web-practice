@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function addRow(results){
         let table = document.querySelector("#history");
-        let row = table.insertRow(0);
+        let row = table.insertRow(1);
 
         let c0 = document.createElement("td");
         c0.innerText = `Round ${table.rows.length-1}:`
