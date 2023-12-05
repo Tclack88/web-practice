@@ -1,10 +1,13 @@
 #container{
     display: flex;
     flex-wrap: wrap;
+    /* width: 352px; */
+    border: 2px black solid;
 }
 
 .box{
     border: 1px black solid;
     background-color: aqua;
     padding: 10px;
+    touch-action: none;
 }
